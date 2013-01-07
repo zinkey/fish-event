@@ -17,6 +17,6 @@
 		}
 	};
 	FishEvent.event = function(tag_fn,tag_args){
-		map.fn[tag_fn].apply(event.target||event.srcElement,map.args[tag_args]);
+		map.fn[tag_fn].apply(event.target||event.srcElement,map.args[tag_args]||[]);
 	};
 })();
