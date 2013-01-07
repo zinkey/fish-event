@@ -11,21 +11,20 @@
 
 
 <script type="text/template" id="template">
-	for (var i=0;i<1000;i++){
+	for (var i=0;i<200;i++){
 		{$
-			<li onclick={%run(i)%} style="background:red;">
+			<li onclick={%run("abc",[1,{a:i},3])%} style="background:red;">
 				{%abc%}
 			</li>
-			<li onclick={%go()%} style="background:yellow;margin-bottom:10px;">
-				{%i%}_abcdefg
-			</li>
+			<li onclick={%go()%} style="background:yellow;margin-bottom:10px;">{%i%} abcdefg</li>
 		$}
 	}
 </script>
 <script>
+
 document.getElementById("list").innerHTML = YayaTemplate(document.getElementById("template").innerHTML).render({
-	run:FishEvent(function(i){
-		alert(i);
+	run:FishEvent(function(a,b,c,d){
+		alert(b[1].a);
 	}),
 	go:FishEvent(function(){
 		alert(this.innerHTML);
